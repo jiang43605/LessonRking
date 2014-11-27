@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="970" WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded" ResizeMode="NoResize"  Icon="排课.ico">
+    <Window.Resources> <!--设置ElementStyle的样式，使得表中元素中内容可以居中显示-->
+        <ResourceDictionary>
+            <Style x:Key="dgCell" TargetType="TextBlock">
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <DataGrid  RowHeight="50"  CanUserSortColumns="False"  CanUserReorderColumns="False" ColumnHeaderHeight="30"  CanUserResizeColumns="False" CanUserResizeRows="False" IsReadOnly="True" AutoGenerateColumns="False"  x:Name="dg1" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" VerticalGridLinesBrush="Green" RowBackground="AliceBlue" HorizontalGridLinesBrush="Green" BorderBrush="{x:Null}" CanUserAddRows="False" Cursor="Arrow" SelectionUnit="Cell" Background="{x:Null}">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center">
+                        </Setter>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.Columns >
+                    <DataGridTextColumn ElementStyle="{StaticResource dgCell}" FontSize="20" CanUserSort="False" Width="50" x:Name="Jishu" Binding="{Binding Id}" Header="节数" />
+                    <DataGridTextColumn ElementStyle="{StaticResource dgCell}" FontSize="15" Width="*" Binding="{Binding Monday}" Header="星期一"/>
+                    <DataGridTextColumn ElementStyle="{StaticResource dgCell}" FontSize="15" Width="*" Binding="{Binding Tuesday}" Header="星期二" />
+                    <DataGridTextColumn ElementStyle="{StaticResource dgCell}" FontSize="15" Width="*" Binding="{Binding Wednesday}" Header="星期三" />
+                    <DataGridTextColumn ElementStyle="{StaticResource dgCell}" FontSize="15" Width="*" Binding="{Binding Thursday}" Header="星期四" />
+                    <DataGridTextColumn ElementStyle="{StaticResource dgCell}" FontSize="15" Width="*" Binding="{Binding Friday}" Header="星期五" />
+                </DataGrid.Columns>
+            </DataGrid>
+            
+        </StackPanel>
+        <!--<Button Content="导出" HorizontalAlignment="Left" Margin="417,521,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>-->
+
+    </Grid>
+</Window>

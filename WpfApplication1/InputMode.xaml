@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfApplication1.InputMode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="InputMode"  Height="491.761" Width="669" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Icon="排课.ico" >
+    <Grid x:Name="Gd1" >
+        <GroupBox BorderBrush="#FFF9180D" Header="一、请勾选你要生成的班级,注意当选择后就无法撤销！" HorizontalAlignment="Left" Margin="22,30,0,0" VerticalAlignment="Top" Height="94" Width="610">
+            <Grid>
+                <CheckBox IsChecked="False" x:Name="CB1" Content="一班" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="CB1_Checked"/>
+                <CheckBox IsChecked="False" x:Name="CB2" Content="二班" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Checked="CB2_Checked"/>
+                <CheckBox IsChecked="False"  x:Name="CB3" Content="三班" HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top" Checked="CB3_Checked"/>
+                <CheckBox IsChecked="False"  x:Name="CB4" Content="四班" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Checked="CB4_Checked"/>
+                <CheckBox IsChecked="False"  x:Name="CB5" Content="五班" HorizontalAlignment="Left" Margin="198,47,0,0" VerticalAlignment="Top" Checked="CB5_Checked"/>
+                <CheckBox IsChecked="False"  x:Name="CB6" Content="六班" HorizontalAlignment="Left" Margin="394,47,0,0" VerticalAlignment="Top" Checked="CB6_Checked"/>
+                <Button x:Name="BtAll" Content="全选" HorizontalAlignment="Left" Margin="489,23,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="二、输入要添加的课时及课时数" HorizontalAlignment="Left" Margin="22,170,0,0" VerticalAlignment="Top" Height="153" Width="610" BorderBrush="#FFF91A0F">
+            <Grid>
+                <!--<Label Content="教师名字：" HorizontalAlignment="Left" Margin="13,29,0,0" VerticalAlignment="Top"/>-->
+                <Label Content="课时：" HorizontalAlignment="Left" Margin="174,21,0,0" VerticalAlignment="Top"/>
+                <!--<TextBox IsReadOnly="True" x:Name="TbName" HorizontalAlignment="Left" Height="23" Margin="88,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="85" GotFocus="TbName_GotFocus" Tag="" />-->
+                <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" InputMethod.IsInputMethodEnabled="False"  MaxLength="2" TabIndex="2" x:Name="TbHours" HorizontalAlignment="Left" Height="23" Margin="224,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="68" BorderBrush="Black"  />
+                <Label Content="科目：" HorizontalAlignment="Left" Margin="40,22,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" MaxLength="10" TabIndex="1" x:Name="TbKemu"  HorizontalAlignment="Left" Height="23" Margin="86,24,0,0" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" Width="64" Tag="" GotFocus="TbKemu_GotFocus" BorderBrush="Black"/>
+                <Button TabIndex="5" x:Name="BtPlugin" Content="添加" HorizontalAlignment="Left" Margin="86,97,0,0" VerticalAlignment="Top" Width="64" Click="BtPlugin_Click">
+                </Button>
+                <Label Content="限制：" HorizontalAlignment="Left" Margin="433,20,0,0" VerticalAlignment="Top"/>
+                <ComboBox TabIndex="4"  ItemBindingGroup="{Binding Cbcountlist}" x:Name="Cbcount" HorizontalAlignment="Left" Margin="484,24,0,0" VerticalAlignment="Top" Width="64" Background="{x:Null}"/>
+                <Label Content="总科目：" HorizontalAlignment="Left" Margin="482,97,0,0" VerticalAlignment="Top"/>
+                <Label Content="总课时：" HorizontalAlignment="Left" Margin="376,97,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="LbTime" Content="" HorizontalAlignment="Left" Margin="426,97,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="LbNumber" Content="0" HorizontalAlignment="Left" Margin="534,97,0,0" VerticalAlignment="Top"/>
+                <CheckBox TabIndex="3"  Name="CbSimily" Content="不可重复" HorizontalAlignment="Left" Margin="330,26,0,0" VerticalAlignment="Top" Width="80"   >
+                </CheckBox>
+                <Rectangle  HorizontalAlignment="Left" Height="22" Margin="348,99,0,0" Stroke="#FF545753" VerticalAlignment="Top" Width="240"/>
+            </Grid>
+        </GroupBox>
+        <Button TabIndex="7" x:Name="BtFalse" Content="退出" HorizontalAlignment="Left" Margin="421,352,0,0" VerticalAlignment="Top" Width="75" Click="BtFalse_Click"/>
+        <Button TabIndex="6" x:Name="BtFinish" Content="完成" HorizontalAlignment="Left" Margin="188,352,0,0" VerticalAlignment="Top" Width="75" Click="BtFinish_Click"/>
+        <Button Name="BtDelet" Content="清空" HorizontalAlignment="Left" Margin="311,352,0,0" VerticalAlignment="Top" Width="75" Click="BtDelet_Click"/>
+        <ProgressBar Visibility="Hidden" Name="Pbar" IsIndeterminate="False" HorizontalAlignment="Left" Height="22" Margin="228,374,0,0" VerticalAlignment="Top" Width="326"/>
+        <Label Visibility="Hidden" Name="LbPb" Content="请稍等，课表正在生成当中..." HorizontalAlignment="Left" Margin="35,371,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="Cbshow" BindingGroup="{Binding Cbshowkemuhours}" HorizontalAlignment="Left" Margin="167,415,0,0" VerticalAlignment="Top" Width="339" Background="{x:Null}"/>
+        <Label Content="已添加的科目查看：" HorizontalAlignment="Left" Margin="44,412,0,0" VerticalAlignment="Top"/>
+        <Button Name="BtDeletKemuHours" Content="删除" HorizontalAlignment="Left" Margin="524,415,0,0" VerticalAlignment="Top" Width="75" Click="BtDeletKemuHours_Click" />
+        <Label x:Name="LbContent" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="188,381,0,0" VerticalAlignment="Top" Width="308"/>
+    </Grid>
+</Window>
